@@ -1,0 +1,25 @@
+{
+  "name": "graphql-booking-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lsmucassi/graphQl-Booking-API.git"
+  },
+  "author": "lsmucassi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lsmucassi/graphQl-Booking-API/issues"
+  },
+  "homepage": "https://github.com/lsmucassi/graphQl-Booking-API#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
