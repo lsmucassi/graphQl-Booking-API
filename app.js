@@ -10,8 +10,16 @@ const PORT = 3000
 app.use('/graphql', graphQlHttp({ //graphQl end-point
     //Define
     schema: buildSchema(`
+        type Event {
+            _id: ID!
+            title: String!
+            description: String!
+            price: Float
+            data: String!
+        }
+
         type RootQuery {
-            events: [String!]! 
+            events: [Event!]! 
         }
 
         type RootMutation {
