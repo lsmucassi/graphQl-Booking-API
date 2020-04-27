@@ -8,26 +8,35 @@ const app = express()
 const PORT = 3000
 
 app.use('/graphql', graphQlHttp({ //graphQl end-point
+    //Define
     schema: buildSchema(`
         type RootQuery {
             events: [String!]! 
         }
 
         type RootMutation {
-             createEvents(name: String): String
+             createEvent(name: String): String
         }
-        
+
         schema {
             query: RootQuery
             mutation: RootMutation
         }
     `),
     rootValue: { //Resolver
-        events: () => {
-            return
+        //Implement
+        events: () => { //resolver for querying events 
+            return ['Romantic', 'Cooking', 'Cuddling', 'All-Night Work', 'Coding', 'Data'];
+        },
+        createEvent: (args ) => { //resolver for mutating/creating events
+            const eventName = args.name;
+            return eventName;
+
         }
     },
-}))
+    graphiql: true //debug tool
+  })
+)
 
 
 app.use(bodyParser.json())
