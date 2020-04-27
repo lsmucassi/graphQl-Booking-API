@@ -7,20 +7,26 @@ const { buildSchema } = require('graphql')
 const app = express()
 const PORT = 3000
 
-app.use('/graphql', graphQlHttp({
+app.use('/graphql', graphQlHttp({ //graphQl end-point
     schema: buildSchema(`
         type RootQuery {
-            event: [String!]
+            events: [String!]! 
         }
+
         type RootMutation {
              createEvents(name: String): String
         }
+        
         schema {
             query: RootQuery
             mutation: RootMutation
         }
     `),
-    rootValue: {},
+    rootValue: { //Resolver
+        events: () => {
+            return
+        }
+    },
 }))
 
 
