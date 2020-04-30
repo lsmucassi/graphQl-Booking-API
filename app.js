@@ -63,11 +63,18 @@ app.use('/graphql', graphQlHttp({ //graphQl end-point
   })
 )
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${
-                    process.env.MONGO_PASS
-                }@cruizelabs-rmkwy.mongodb.net/test?authSource=admin&replicaSet=cruizeLabs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true`)
-                .then(() => {
-                    app.listen(PORT, () => console.log(`APP: Server running on port ${PORT}`))
-                }).catch(err => {
-                    console.log('APP: Errorr [error starting server, connection to DB error!')
-                })
+//Connect DB
+mongoose.connect(`mongodb+srv://:@cruizelabs-rmkwy.mongodb.net/test?retryWrites=true&w=majority`, 
+    { useUnifiedTopology: true , useNewUrlParser: true})
+    .then(() => console.log('DB Connected!'))
+    .catch(err => {
+        console.log(`DB Connection Error: ${err.message}`);
+    });
+
+
+// mongoose.connect(``)
+//                 .then(() => {
+//                     app.listen(PORT, () => console.log(`APP: Server running on port ${PORT}`))
+//                 }).catch(err => {
+//                     console.log('APP: Errorr [error starting server, connection to DB error!')
+//                 })
