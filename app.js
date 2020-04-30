@@ -75,11 +75,3 @@ mongoose.connect(process.env.MONGO_CONNECT,
     .catch(err => {
         console.log('APP: Errorr [error starting server, connection to DB error!')
     });
-
-
-// mongoose.connect(``)
-//                 .then(() => {
-//                     app.listen(PORT, () => console.log(`APP: Server running on port ${PORT}`))
-//                 }).catch(err => {
-//                     console.log('APP: Errorr [error starting server, connection to DB error!')
-//                 })
