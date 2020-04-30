@@ -3,11 +3,14 @@ const bodyParser = require('body-parser')
 const graphQlHttp = require('express-graphql')
 const { buildSchema } = require('graphql')
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
 const app = express()
 const events = [];
 
 const PORT = 3000
+
+dotenv.config()
 
 app.use(bodyParser.json())
 
@@ -64,7 +67,7 @@ app.use('/graphql', graphQlHttp({ //graphQl end-point
 )
 
 //Connect DB
-mongoose.connect(`mongodb+srv://:@cruizelabs-rmkwy.mongodb.net/test?retryWrites=true&w=majority`, 
+mongoose.connect(process.env.MONGO_CONNECT, 
     { useUnifiedTopology: true , useNewUrlParser: true})
     .then(() => console.log('DB Connected!'))
     .catch(err => {
