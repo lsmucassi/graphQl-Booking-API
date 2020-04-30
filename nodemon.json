@@ -1,7 +1,0 @@
-/*mongodb+srv://cruixer:cruize5956@cruizelabs-rmkwy.mongodb.net/test?authSource=admin&replicaSet=cruizeLabs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true*/
-{
-    "env": {
-      "MONGO_USER": "cruixer",
-      "MONGO_PASS": "cruize5956"
-    }
-}
