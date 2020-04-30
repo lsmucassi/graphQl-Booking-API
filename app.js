@@ -69,9 +69,11 @@ app.use('/graphql', graphQlHttp({ //graphQl end-point
 //Connect DB
 mongoose.connect(process.env.MONGO_CONNECT, 
     { useUnifiedTopology: true , useNewUrlParser: true})
-    .then(() => console.log('DB Connected!'))
+    .then(() => {
+        app.listen(PORT, () => console.log(`APP: Server running on port ${PORT}`))
+    })
     .catch(err => {
-        console.log(`DB Connection Error: ${err.message}`);
+        console.log('APP: Errorr [error starting server, connection to DB error!')
     });
 
 
