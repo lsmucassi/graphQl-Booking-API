@@ -2,13 +2,14 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const graphQlHttp = require('express-graphql')
 const { buildSchema } = require('graphql')
-
+const mongoose = require('mongoose')
 
 const app = express()
-
 const events = [];
 
 const PORT = 3000
+
+app.use(bodyParser.json())
 
 app.use('/graphql', graphQlHttp({ //graphQl end-point
     //Define
@@ -62,6 +63,5 @@ app.use('/graphql', graphQlHttp({ //graphQl end-point
   })
 )
 
-
-app.use(bodyParser.json())
+mongoose.connect()
 app.listen(PORT, () => console.log(`APP: Server running on port ${PORT}`))  
