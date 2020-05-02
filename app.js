@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
 const app = express()
-const PORT = 3000
+const PORT = 5000
 dotenv.config()
 
 const Event = require('./models/event')
@@ -80,6 +80,7 @@ mongoose.connect(process.env.MONGO_CONNECT,
         app.listen(PORT, () => console.log(`APP: Server running on port ${PORT}`))
     })
     .catch(err => {
-        console.log('APP: Errorr [error starting server, connection to DB error!')
+        console.log('APP: Errorr [error starting server, connection to DB error!' + err)
+        throw err
     }
 );
