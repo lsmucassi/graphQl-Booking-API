@@ -63,7 +63,16 @@ app.use('/graphql', graphQlHttp({ //graphQl end-point
                 price: +args.eventInput.price,
                 date: new Dtate(args.eventInput.date)
             })
-            event.save()
+            event
+                .save()
+                .then(result => {
+                    console.log(result)
+                    return { ...result._doc }
+                })
+                .catch(err => {
+                    console.log(err)
+                    throw err
+                })
             return event
         }
     },
