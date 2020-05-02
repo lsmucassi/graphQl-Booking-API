@@ -6,11 +6,10 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
 const app = express()
-const events = [];
-
 const PORT = 3000
-
 dotenv.config()
+
+const Event = require('./models/event')
 
 app.use(bodyParser.json())
 
@@ -51,14 +50,20 @@ app.use('/graphql', graphQlHttp({ //graphQl end-point
             return events;
         },
         createEvent: args => { //resolver for mutating/creating events
-            const event = {
-                _id: Math.random().toString(),
+            // const event = {
+            //     _id: Math.random().toString(),
+            //     title: args.eventInput.title,
+            //     description: args.eventInput.description,
+            //     price: +args.eventInput.price,
+            //     date: new Date().toISOString()
+            // }
+            const event = new Event({
                 title: args.eventInput.title,
                 description: args.eventInput.description,
                 price: +args.eventInput.price,
-                date: new Date().toISOString()
-            }
-            events.push(event)
+                date: new Dtate(args.eventInput.date)
+            })
+            event.save()
             return event
         }
     },
@@ -74,4 +79,5 @@ mongoose.connect(process.env.MONGO_CONNECT,
     })
     .catch(err => {
         console.log('APP: Errorr [error starting server, connection to DB error!')
-    });
+    }
+);
