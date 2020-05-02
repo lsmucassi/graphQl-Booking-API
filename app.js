@@ -50,20 +50,13 @@ app.use('/graphql', graphQlHttp({ //graphQl end-point
             return events;
         },
         createEvent: args => { //resolver for mutating/creating events
-            // const event = {
-            //     _id: Math.random().toString(),
-            //     title: args.eventInput.title,
-            //     description: args.eventInput.description,
-            //     price: +args.eventInput.price,
-            //     date: new Date().toISOString()
-            // }
             const event = new Event({
                 title: args.eventInput.title,
                 description: args.eventInput.description,
                 price: +args.eventInput.price,
                 date: new Dtate(args.eventInput.date)
             })
-            event
+            return event
                 .save()
                 .then(result => {
                     console.log(result)
